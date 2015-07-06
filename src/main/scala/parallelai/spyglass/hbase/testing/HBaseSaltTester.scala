@@ -88,7 +88,7 @@ class HBaseSaltTester (args: Args) extends JobBase(args) with HBasePipeConversio
   val splitType =  if(args.getOrElse("regional", "true").toBoolean) SplitType.REGIONAL else SplitType.GRANULAR
 
   val testName01 = "Scan All with NO useSalt"
-  val list01 = (00000 to 99999).toList.map(x => ("" + (x%10) + "_" + "%010d".format(x), "" + (x%10) + "_" + "%010d".format(x), "%010d".format(x)))
+  val list01 = (0 to 99999).toList.map(x => ("" + (x%10) + "_" + "%010d".format(x), "" + (x%10) + "_" + "%010d".format(x), "%010d".format(x)))
   val hbase01 = new HBaseSource( "_TEST.SALT.01", quorum, 'key,
           TABLE_SCHEMA.tail.map((x: Symbol) => "data"),
           TABLE_SCHEMA.tail.map((x: Symbol) => new Fields(x.name)),
