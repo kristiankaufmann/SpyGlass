@@ -1,11 +1,8 @@
-sbtPlugin := true
-
 name := "parallelai.spyglass"
 
 organization := "com.vimeo"
 
 enablePlugins(GitVersioning, GitBranchPrompt)
-
 git.baseVersion := "4.4"
 git.uncommittedSignifier := {
     val df = new java.text.SimpleDateFormat("yyyyMMdd'T'HHmmss")
@@ -13,7 +10,7 @@ git.uncommittedSignifier := {
     val suffix = "-" + (df format (new java.util.Date)) + "-MODIFIED-SNAPSHOT"
     if (git.gitHeadCommit.value.isDefined) {
       //println(git.gitHeadCommit.value.get)
-      Some(git.gitHeadCommit.value.get.take(6) + suffix)
+      Some(suffix)
     } else {
       Some("INITIAL" + suffix)
     }
