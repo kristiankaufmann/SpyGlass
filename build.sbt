@@ -7,7 +7,7 @@ git.baseVersion := "4.4"
 git.uncommittedSignifier := {
     val df = new java.text.SimpleDateFormat("yyyyMMdd'T'HHmmss")
     df setTimeZone java.util.TimeZone.getTimeZone("GMT")
-    val suffix = "-" + (df format (new java.util.Date)) + "-MODIFIED-SNAPSHOT"
+    val suffix = (df format (new java.util.Date)) + "-MODIFIED-SNAPSHOT"
     if (git.gitHeadCommit.value.isDefined) {
       //println(git.gitHeadCommit.value.get)
       Some(suffix)
